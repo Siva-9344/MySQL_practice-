@@ -1,0 +1,277 @@
+show databases;
+create database branch_a3;
+show databases;
+use branch_a3;
+show tables;
+CREATE TABLE Departments
+(DepartmantId INT PRIMARY KEY,
+DepartmentName VARCHAR(50));
+show tables;
+
+INSERT INTO Departments (DepartmantId, DepartmentName)
+VALUES
+(1, 'HR'),
+(2, 'Engineer'),
+(3, 'Digital Marketing');
+
+select * from Departments;
+ALTER TABLE departments 
+CHANGE DepartmentId DepartmentId INT;
+
+select * from departments;
+
+CREATE TABLE Emp_details (Emp_Id INT PRIMARY KEY,
+Emp_Name VARCHAR(100),
+DepartmentId INT,
+FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId));
+select * from emp_details;
+
+INSERT INTO Emp_details(Emp_Id, Emp_Name, DepartmentId)
+VALUES 
+(101, 'Alice Johnson', 1),
+(102, 'Bob Smith', 2),
+(103, 'Carol White', 3),
+(104, 'David Brown', 2);
+select * from emp_details;
+use branch_a3;
+
+SELECT Emp_details.Emp_Id, Emp_details.Emp_Name,Departments.DepartmentName from Emp_details
+INNER JOIN Departments ON Emp_details.DepartmentId = Departments.DepartmentId;
+show databases;
+use branch_a1;
+select * from emp_details;
+use student_registration;
+select * from students;
+
+show databases;
+select * from logindetails;
+show databases;
+use authentication;
+Alter logindetails add column status varchar(50);
+describe logindetails;
+
+show databases;
+use authentication;
+show tables;
+select * from logindetails;
+ALTER TABLE logindetails add column Status varchar(50);
+ALTER TABLE logindetails change password Password varchar(50);
+
+
+use student_registration;
+show tables;
+select * from students;
+show databases;
+use student_registration;
+select * from student_registration;
+show databases;
+use student_registration;
+show tables;
+select * from students;
+ALTER TABLE students
+DROP COLUMN email;
+show databases;
+use branch_a1;
+show tables;
+select * from emp_details;
+select salary, Hired_date from emp_details;
+select Name from emp_details;
+select dep from emp_details;
+select * from emp_details where dep = "Lead Designer";
+select * from emp_details where salary > 75000;
+show databases;
+use branch_a1;
+select * from emp_details;
+select * from emp_details where Name = "Raj";
+select * from emp_details where salary > 80000;
+select * from emp_details where Hired_date between "2024-08-10" and "2024-08-12";
+select * from emp_details where Name Like 'A%en%';
+select * from emp_details where dep = "hr manager";
+select * from emp_details where dep = "web designer" and  salary > 50000;
+select * from emp_details where salary < 66000;
+update emp_details set salary  = salary +5 where (id = 10 or id = 30);
+select * from emp_details where id = 30;
+Alter table emp_details add column email varchar(150);
+select * from emp_details;
+SET SQL_SAFE_UPDATES = 1;
+update emp_details set email = 'general123@gmail.com' where salary between 76000 and 82000;
+select * from emp_details where email is Not Null;
+select * from emp_details where dep Not in ('software engineer', 'sales manager', 'hr manager'); 
+
+select * from emp_details where (dep = 'software engineer' or salary between 76000 and 80000) and Hired_date between 2024-10-09 and 2024-11-09;
+
+show databases;
+create database branch_a4;
+use branch_a4;
+create table emp_details
+(id INT AUTO_INCREMENT PRIMARY KEY,
+Name varchar(50),
+dep varchar(50),
+age int,
+salary decimal,
+performance varchar(100),
+email varchar(150));
+alter table emp_details add column Hired_date varchar(50);
+
+describe emp_details;
+
+insert into emp_details (Name, dep, age, salary, performance, email, Hired_date)
+values ('Alice Johnson', 'HR', 29, 55000.00, 'Excellent', 'alice.johnson@company.com', '2020-02-15'),
+('Bob Smith', 'Finance', 35, 62000.00, 'Good', 'bob.smith@company.com', '2019-07-21'),
+('Carol White', 'IT', 28, 71000.00, 'Average', 'carol.white@company.com', '2021-03-11'),
+('David Brown', 'Marketing', 32, 47000.00, 'Excellent', 'david.brown@company.com', '2018-12-05'),
+('Eve Black', 'Sales', 26, 53000.00, 'Good', 'eve.black@company.com', '2020-08-23'),
+('Frank Green', 'IT', 40, 80000.00, 'Excellent', 'frank.green@company.com', '2017-09-14'),
+('Grace Adams', 'HR', 45, 49000.00, 'Average', 'grace.adams@company.com', '2016-06-09'),
+('Henry Clark', 'Sales', 27, 52000.00, 'Good', 'henry.clark@company.com', '2020-10-18'),
+('Isabella Turner', 'Finance', 31, 66000.00, 'Excellent', 'isabella.turner@company.com', '2019-11-28'),
+('Jack King', 'IT', 25, 75000.00, 'Good', 'jack.king@company.com', '2022-01-05'),
+('Karen Lee', 'HR', 36, 54000.00, 'Average', 'karen.lee@company.com', '2017-04-12'),
+('Leo Walker', 'Finance', 42, 63000.00, 'Excellent', 'leo.walker@company.com', '2015-03-07'),
+('Mia Scott', 'Marketing', 30, 48000.00, 'Good', 'mia.scott@company.com', '2018-09-21'),
+('Nathan Harris', 'IT', 34, 69000.00, 'Good', 'nathan.harris@company.com', '2020-12-15'),
+('Olivia Davis', 'HR', 29, 50000.00, 'Excellent', 'olivia.davis@company.com', '2021-05-19'),
+('Peter Baker', 'Sales', 33, 51000.00, 'Average', 'peter.baker@company.com', '2017-08-26'),
+('Quincy Hall', 'Finance', 44, 62000.00, 'Good', 'quincy.hall@company.com', '2016-11-30'),
+('Rachel Young', 'Marketing', 41, 47000.00, 'Excellent', 'rachel.young@company.com', '2015-01-18'),
+('Samuel Moore', 'IT', 24, 72000.00, 'Average', 'samuel.moore@company.com', '2021-06-27'),
+('Tina Wilson', 'Sales', 28, 54000.00, 'Good', 'tina.wilson@company.com', '2019-02-14'),
+('Ursula Evans', 'HR', 37, 53000.00, 'Excellent', 'ursula.evans@company.com', '2017-07-04'),
+('Victor Thompson', 'Finance', 39, 66000.00, 'Good', 'victor.thompson@company.com', '2018-03-17'),
+('Wendy Harris', 'Marketing', 31, 48000.00, 'Excellent', 'wendy.harris@company.com', '2020-04-25'),
+('Xander Lewis', 'IT', 25, 71000.00, 'Good', 'xander.lewis@company.com', '2021-11-09'),
+('Yvonne Foster', 'Sales', 36, 50000.00, 'Average', 'yvonne.foster@company.com', '2018-01-31'),
+('Zachary Phillips', 'HR', 43, 57000.00, 'Excellent', 'zachary.phillips@company.com', '2016-08-12'),
+('Amy Wilson', 'Finance', 26, 62000.00, 'Good', 'amy.wilson@company.com', '2021-10-03'),
+('Brian Edwards', 'IT', 38, 72000.00, 'Average', 'brian.edwards@company.com', '2018-05-06'),
+('Catherine Cooper', 'Sales', 32, 51000.00, 'Good', 'catherine.cooper@company.com', '2019-09-24'),
+('Daniel Reed', 'HR', 30, 54000.00, 'Excellent', 'daniel.reed@company.com', '2020-07-15'),
+('Emma Watson', 'Finance', 28, 60000.00, 'Good', 'emma.watson@company.com', '2021-08-21'),
+('Felix Martinez', 'IT', 27, 74000.00, 'Average', 'felix.martinez@company.com', '2020-11-12'),
+('Gina Collins', 'Marketing', 35, 46000.00, 'Excellent', 'gina.collins@company.com', '2019-03-03'),
+('Harry Parker', 'Sales', 33, 53000.00, 'Good', 'harry.parker@company.com', '2018-12-08'),
+('Ivy Bennett', 'HR', 40, 58000.00, 'Average', 'ivy.bennett@company.com', '2017-10-10'),
+('James Russell', 'Finance', 45, 67000.00, 'Excellent', 'james.russell@company.com', '2015-04-19'),
+('Kevin Barnes', 'IT', 41, 81000.00, 'Good', 'kevin.barnes@company.com', '2016-03-02'),
+('Laura Anderson', 'Sales', 29, 52000.00, 'Excellent', 'laura.anderson@company.com', '2021-06-08'),
+('Mike Peterson', 'HR', 36, 49000.00, 'Average', 'mike.peterson@company.com', '2019-11-16'),
+('Nina Carter', 'Finance', 34, 65000.00, 'Good', 'nina.carter@company.com', '2020-09-30'),
+('Oscar Stone', 'Marketing', 32, 46000.00, 'Excellent', 'oscar.stone@company.com', '2017-01-22'),
+('Paula Cruz', 'IT', 28, 73000.00, 'Average', 'paula.cruz@company.com', '2022-02-11'),
+('Quinn Brooks', 'Sales', 37, 52000.00, 'Good', 'quinn.brooks@company.com', '2019-04-29'),
+('Rita Cook', 'HR', 29, 55000.00, 'Excellent', 'rita.cook@company.com', '2018-06-14'),
+('Steve Rogers', 'Finance', 39, 66000.00, 'Good', 'steve.rogers@company.com', '2016-07-19'),
+('Tom Watson', 'IT', 26, 75000.00, 'Average', 'tom.watson@company.com', '2021-09-07'),
+('Uma Rivera', 'Marketing', 30, 47000.00, 'Excellent', 'uma.rivera@company.com', '2020-02-05'),
+('Vince Hughes', 'Sales', 38, 53000.00, 'Good', 'vince.hughes@company.com', '2017-12-20'),
+('Willa Bell', 'HR', 33, 51000.00, 'Excellent', 'willa.bell@company.com', '2019-10-26'),
+('Xena Diaz', 'Finance', 40, 68000.00, 'Good', 'xena.diaz@company.com', '2018-05-13'),
+('Yara Garcia', 'IT', 24, 71000.00, 'Average', 'yara.garcia@company.com', '2021-01-30');
+select * from emp_details;
+select * from emp_details order by Name Asc;
+select * from emp_details order by salary Desc;
+select * from emp_details order by age asc;
+use branch_a4;
+select * from emp_details;
+select * from emp_details order by name Asc;
+select * from emp_details order by salary desc;
+select * from emp_details order by performance asc, salary desc, hired_date desc;
+select count(name) from emp_Details;
+select count(hired_date) from emp_details;
+select count(*)  as total_employess from  emp_Details;
+select id count(*) from emp_details group by id;
+
+show databases;
+use branch_a4;
+select * from emp_details;
+
+
+
+
+select count(*) from emp_details;
+select Avg(salary) from emp_details;
+select max(salary) from emp_details;
+select sum(salary) from emp_details;
+select group_concat(email) from emp_details;
+select count(distinct salary) from emp_details;
+select variance(salary) from emp_details;
+
+select STDDEV(salary) from emp_details;
+select * from emp_details;
+
+select count(*) as employess from emp_details;
+select dep, avg(salary) as avg_salary from emp_details group by dep;
+select name,max(salary) as max_salary from emp_details group by name;
+select dep, min(salary) as min_salary from emp_details group by dep;
+select dep, sum(salary) as total_salary from emp_details group by dep;
+SELECT performance_rating, COUNT(*) AS count 
+FROM employees 
+GROUP BY performance_rating;
+
+select performance, count(*) from emp_details group by performance;
+
+select name,dep,salary,count(*) as excellent_count from emp_details where performance = "excellent" group by name,dep, salary;
+
+show databases;
+use branch_a4;
+select *from emp_details;
+select dep, count(*) as emp_count from emp_details group by dep;
+select distinct dep from emp_details;
+use branch_a1;
+select distinct dep from emp_details;
+select dep, count(*) as emp_count from emp_details group by dep;
+select performance, count(*) as per from emp_details group by performance order by per desc;
+select dep,avg(salary) as avg_salary from emp_details group by dep;
+select dep, min(salary) as max_salary from emp_details group by dep;
+select dep, avg(salary) as avg_salary from emp_details group by dep having avg(salary)> 50000;
+select performance, count(*) as excellent_emp from emp_details group by performance having performance = 'Excellent';
+select dep, count(*) as emp_count from emp_details group by dep having emp_count > 10;
+select dep, sum(salary) as total_salary from emp_details group by dep;
+select dep, avg(salary) as avg_salary from emp_details group by dep having avg_salary < 60000;
+select performance, count(*) from emp_details group by performance;
+select dep, max(salary) from emp_details group by dep;
+select name, dep, salary from emp_details where dep in ('hr', 'marketting') order by salary desc;
+select name, dep, salary from emp_details where dep != ('hr') and dep != 'IT';
+select * from emp_details;
+select name, dep, salary, hired_date from emp_details where hired_date between '2020-02-15' and '2020-08-15'; 
+select name,dep, salary, hired_date from emp_details where year(hired_date) = '2022';
+show databases;
+use branch_a1;
+select * from emp_details;
+select name,dep,email from emp_details where email is null;
+select name, dep,email from emp_details where email is not null;
+use branch_a4;
+select * from emp_details;
+select name,dep,salary from emp_details where dep Not in  ('it','hr');
+
+select name,dep,salary from emp_details where salary > (select avg(salary) from emp_details);
+select avg(salary) as avg_salary from emp_details;
+select distinct dep from emp_details where salary > 60000;
+select name, dep,hired_date from emp_details where day(hired_date) = '6';
+use branch_a4;
+select * from emp_details;
+select name, hired_date from emp_details where DAYOFWEEK(hired_date) = 2;
+select name ,salary*1.1 as salary_increased from emp_details where salary*1.1>60000;
+select name,email from emp_details where char_length(email)>15;
+select  dep, count(*) as emp_count from emp_details group by dep having emp_count > 11 ; 
+select * from emp_details;
+
+select max(salary) from emp_details where dep = 'hr';
+select name, dep,salary, (salary/ (select max(salary) from emp_details))*100 as percentage from emp_details order by percentage desc;
+select name,dep,salary from emp_details where salary > (select avg(salary) from emp_details);
+select avg(salary) as avg_salary from emp_details
+SELECT * 
+FROM emp_details
+WHERE dep IN (SELECT dep FROM emp_details WHERE salary > 70000);
+
+SELECT * 
+FROM emp_details 
+WHERE dep IN (SELECT dep FROM emp_details WHERE salary > 70000);
+select name,dep,salary 
+from emp_details as e 
+where exists (select * from emp_details where dep = 'finance' and salary > 60000 and e.name = name)
+select name,dep, salary from emp_details where dep = 'finance' and salary > 60000;
+select * from emp_details where dep not in (select dep from emp_details where dep = 'hr');
+select name,dep, salary from emp_details as e1
+where salary > (select avg(salary) from emp_details as e2 where e1.dep = e2.dep);
+select name, dep,max(salary) from emp_details where salary > any(select salary from emp_details where dep = 'sales'); 
